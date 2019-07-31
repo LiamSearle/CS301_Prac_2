@@ -657,28 +657,51 @@ namespace Assem {
             ps = badOp;
       break;// character checked store
           case PVM.inpc:          // char input
-            Push([Pop()]) = data.ReadChar();
+            Push(data.ReadChar());
       break;
           case PVM.prnc:          // integer output
             results.Write((char)Pop(), 0);
       break;
-          case PVM.stoc:          // character checked store
           //case PVM.inpc:          // character input         // character output
           case PVM.cap:
           tos = Pop();
             if (96 < tos && tos < 123)
             {
-              mem[Push()] = (tos - 32);    
+              Push(tos -32);
             }
             else
             {
                 ps = badOp;
             }
       break;           // toUpperCase
-          case PVM.low:           // toLowerCase
-          case PVM.islet:         // isLetter
-          case PVM.inc:           // ++
-          case PVM.dec:           // --
+          case PVM.low: 
+          tos = Pop();
+            if (64 < tos && tos < 91)
+            {
+              Push(tos + 31);
+            }
+            else
+            {
+                ps = badOp;
+            }
+      break;          // toLowerCase
+          case PVM.islet:  
+          tos = Pop();
+          if (64 < tos && tos < 91 || 96 < tos && tos < 123)
+          {
+              Push(1);
+          }else
+          {
+              Push(0);   
+          }       // isLetter
+          case PVM.inc: 
+          tos = Pop();           // ++  //NOT DONE PROPERLY 
+          Push(tos += 1);
+      break;// ++
+          case PVM.dec: 
+          tos = Pop();           // ++  //NOT DONE PROPERLY 
+          Push(tos -= 1);
+      break;          // --
           default:                // unrecognized opcode
             ps = badOp;
             break;
