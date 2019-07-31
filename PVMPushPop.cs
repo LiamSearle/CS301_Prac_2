@@ -574,9 +574,21 @@ namespace Assem {
 			Push(3);
 			break;
           case PVM.lda_0:         // push local address 0
+			adr = cpu.fp - 1 - 0;
+            if (InBounds(adr)) Push(adr);
+            break;
           case PVM.lda_1:         // push local address 1
+			adr = cpu.fp - 1 - 1;
+            if (InBounds(adr)) Push(adr);
+            break;		  
           case PVM.lda_2:         // push local address 2
+		  	adr = cpu.fp - 1 - 2;
+            if (InBounds(adr)) Push(adr);
+            break;
           case PVM.lda_3:         // push local address 3
+		  	adr = cpu.fp - 1 - 3;
+            if (InBounds(adr)) Push(adr);
+            break;
           case PVM.ldl:           // push local value
           case PVM.ldl_0:         // push value of local variable 0
           case PVM.ldl_1:         // push value of local variable 1
