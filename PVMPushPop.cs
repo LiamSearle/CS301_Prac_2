@@ -615,11 +615,36 @@ namespace Assem {
 			Push(mem[Pop()]);
 			break;
           case PVM.stl:           // store local value
+		    adr = cpu.fp - 1 - Next();
+            if (InBounds(adr)) Push(adr);
+			tos = Pop();
+            if (InBounds(adr)) mem[adr] = Pop();
+			break;
           case PVM.stlc:          // store local value
           case PVM.stl_0:         // pop to local variable 0
+		    adr = cpu.fp - 1 - 0;
+            if (InBounds(adr)) Push(adr);
+			tos = Pop();
+            if (InBounds(adr)) mem[adr] = Pop();
+			break;
           case PVM.stl_1:         // pop to local variable 1
+		    adr = cpu.fp - 1 - 1;
+            if (InBounds(adr)) Push(adr);
+			tos = Pop();
+            if (InBounds(adr)) mem[adr] = Pop();
+			break;
           case PVM.stl_2:         // pop to local variable 2
+		    adr = cpu.fp - 1 - 2;
+            if (InBounds(adr)) Push(adr);
+			tos = Pop();
+            if (InBounds(adr)) mem[adr] = Pop();
+			break;
           case PVM.stl_3:         // pop to local variable 3
+		    adr = cpu.fp - 1 - 3;
+            if (InBounds(adr)) Push(adr);
+			tos = Pop();
+            if (InBounds(adr)) mem[adr] = Pop();
+			break;
           case PVM.stoc:          // character checked store
           case PVM.inpc:          // character input
           case PVM.prnc:          // character output
