@@ -507,8 +507,14 @@ namespace Assem {
             mem[--cpu.sp] = 0;
             break;
           case PVM.ldc_1:         // push constant 1
+            mem[--cpu.sp] = 1;
+            break;
           case PVM.ldc_2:         // push constant 2
+            mem[--cpu.sp] = 2;
+            break;
           case PVM.ldc_3:         // push constant 3
+            mem[--cpu.sp] = 3;
+            break;
           case PVM.lda_0:         // push local address 0
             mem[--cpu.sp] = cpu.fp - 1 - 0;                
             break;
