@@ -608,6 +608,7 @@ namespace Assem {
           {
               mem[--cpu.sp] = 0;   
           }       // isLetter
+      break;
           case PVM.inc:                         //NOT DONE PROPERLY
           tos = mem[cpu.sp++];           // ++  //NOT DONE PROPERLY 
           mem[--cpu.sp] = (tos += 1);           //NOT DONE PROPERLY
