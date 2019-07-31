@@ -654,6 +654,7 @@ namespace Assem {
           case PVM.dsp:
           case PVM.lda:
           case PVM.ldc:
+		  case PVM.stl:
 		  case PVM.ldl:
 			i = (i + 1) % memSize; codeFile.Write(mem[i]);	//writes to code area
 			break;  
