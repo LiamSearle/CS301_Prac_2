@@ -590,10 +590,30 @@ namespace Assem {
             if (InBounds(adr)) Push(adr);
             break;
           case PVM.ldl:           // push local value
+		    adr = cpu.fp - 1 - Next();
+            if (InBounds(adr)) Push(adr);
+			Push(mem[Pop()]);
+			break;
           case PVM.ldl_0:         // push value of local variable 0
+			adr = cpu.fp - 1 - 0;
+            if (InBounds(adr)) Push(adr);
+			Push(mem[Pop()]);
+			break;
           case PVM.ldl_1:         // push value of local variable 1
+		  	adr = cpu.fp - 1 - 1;
+            if (InBounds(adr)) Push(adr);
+			Push(mem[Pop()]);
+			break;
           case PVM.ldl_2:         // push value of local variable 2
+		  	adr = cpu.fp - 1 - 2;
+            if (InBounds(adr)) Push(adr);
+			Push(mem[Pop()]);
+			break;
           case PVM.ldl_3:         // push value of local variable 3
+		  	adr = cpu.fp - 1 - 3;
+            if (InBounds(adr)) Push(adr);
+			Push(mem[Pop()]);
+			break;
           case PVM.stl:           // store local value
           case PVM.stlc:          // store local value
           case PVM.stl_0:         // pop to local variable 0
