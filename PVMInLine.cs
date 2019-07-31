@@ -650,6 +650,7 @@ namespace Assem {
             i = (i + 1) % memSize; codeFile.Write(mem[i]);
             break;
           case PVM.ldl:
+          case PVM.stl:
               
           case PVM.prns:
             i = (i + 1) % memSize;
