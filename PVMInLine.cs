@@ -404,7 +404,7 @@ namespace Assem {
 //            if (tracing) results.WriteLine();
             break;
           case PVM.prnc:          // integer output
-            results.Write(mem[cpu.sp++], 0);
+            results.Write((char)mem[cpu.sp++], 0);
             break;
           case PVM.inpb:          // boolean input
             mem[mem[cpu.sp++]] = data.ReadBool() ? 1 : 0;
