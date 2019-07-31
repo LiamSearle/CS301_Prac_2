@@ -1,4 +1,11 @@
 	0	LDC_0	
-	1	PRNI
-	2	PRNL
-	3	HALT
+	1	LDC_1
+	2	LDC_2
+	3	LDC_3
+	4	PRNI		;	0
+	5	PRNL		
+	6	PRNI		;	1
+	7	PRNL	
+	8	PRNI		;	2	
+	9	PRNL	
+	10	PRNI		;	3
