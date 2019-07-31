@@ -549,20 +549,26 @@ namespace Assem {
             mem[cpu.sp] = mem[mem[cpu.sp]];
             break;
           case PVM.stl:           // store local value
-		  //mem[cpu.sp] = mem[mem[cpu.sp]]
-		  //tos = mem[cpu.sp++]; mem[mem[cpu.sp++]] = tos;
-			mem[--cpu.sp] = cpu.fp - 1 - mem[cpu.pc++];  //LDA
-			tos = mem[mem[cpu.sp++]]; mem[cpu.sp++]  = tos;  //STO
+			mem[--cpu.sp] = cpu.fp - 1 - mem[cpu.pc++];  
+			mem[mem[cpu.sp++]] = mem[cpu.sp++];
 			break;
           case PVM.stlc:          // store local value
-          case PVM.stl_0:         // pop to local variable 0		{Current}
-		    mem[--cpu.sp] = cpu.fp - 1 - 0; //Address of 0 loaded
-			tos = mem[mem[cpu.sp++]]; mem[cpu.sp++] = tos;
-			//tos = mem[cpu.sp++]; mem[mem[cpu.sp++]] = tos;
+          case PVM.stl_0:         // pop to local variable 0		
+		    mem[--cpu.sp] = cpu.fp - 1 - 0; 
+			mem[mem[cpu.sp++]] = mem[cpu.sp++];
 			break;
           case PVM.stl_1:         // pop to local variable 1
-          case PVM.stl_2:         // pop to local variable 2
+			mem[--cpu.sp] = cpu.fp - 1 - 1; 
+			mem[mem[cpu.sp++]] = mem[cpu.sp++];
+			break;
+          case PVM.stl_2:         // pop to local variable 2	
+			mem[--cpu.sp] = cpu.fp - 1 - 2; 
+			mem[mem[cpu.sp++]] = mem[cpu.sp++];
+			break;
           case PVM.stl_3:         // pop to local variable 3
+			mem[--cpu.sp] = cpu.fp - 1 - 3; 
+			mem[mem[cpu.sp++]] = mem[cpu.sp++];
+			break;
           case PVM.stoc:          // character checked store
           case PVM.inpc:          // character input
           case PVM.prnc:          // character output
