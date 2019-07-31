@@ -1,11 +1,7 @@
-	0	LDC_0	
-	1	LDC_1
-	2	LDC_2
-	3	LDC_3
-	4	PRNI		;	0
-	5	PRNL		
-	6	PRNI		;	1
-	7	PRNL	
-	8	PRNI		;	2	
-	9	PRNL	
-	10	PRNI		;	3
+	0	DSP		1
+	2	LDC		200		;	val
+	3	STL_0			;	var 0 = val
+	4	LDA_0
+	5	LDV
+	6	PRNI
+	7	HALT

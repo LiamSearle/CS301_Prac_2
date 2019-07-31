@@ -317,6 +317,7 @@ namespace Assem {
         case PVM.lda:
         case PVM.ldc:
         case PVM.prns:
+		case PVM.ldl:
           results.Write(mem[cpu.pc], 7); break;
         default: break;
       }
@@ -382,7 +383,7 @@ namespace Assem {
           case PVM.lda:           // push local address
             mem[--cpu.sp] = cpu.fp - 1 - mem[cpu.pc++];
             break;
-          case PVM.ldv:           // dereference
+          case PVM.ldv:           // dereference 
             mem[cpu.sp] = mem[mem[cpu.sp]];
             break;
           case PVM.sto:           // store
@@ -548,11 +549,17 @@ namespace Assem {
             mem[cpu.sp] = mem[mem[cpu.sp]];
             break;
           case PVM.stl:           // store local value
+		  //mem[cpu.sp] = mem[mem[cpu.sp]]
+		  //tos = mem[cpu.sp++]; mem[mem[cpu.sp++]] = tos;
 			mem[--cpu.sp] = cpu.fp - 1 - mem[cpu.pc++];  //LDA
 			tos = mem[mem[cpu.sp++]]; mem[cpu.sp++]  = tos;  //STO
 			break;
           case PVM.stlc:          // store local value
-          case PVM.stl_0:         // pop to local variable 0
+          case PVM.stl_0:         // pop to local variable 0		{Current}
+		    mem[--cpu.sp] = cpu.fp - 1 - 0; //Address of 0 loaded
+			tos = mem[mem[cpu.sp++]]; mem[cpu.sp++] = tos;
+			//tos = mem[cpu.sp++]; mem[mem[cpu.sp++]] = tos;
+			break;
           case PVM.stl_1:         // pop to local variable 1
           case PVM.stl_2:         // pop to local variable 2
           case PVM.stl_3:         // pop to local variable 3
@@ -641,16 +648,15 @@ namespace Assem {
         codeFile.Write(i, 5);
         codeFile.Write(" } ");
         codeFile.Write(mnemonics[o], -8);
-        switch (o) {
+        switch (o) {	  
           case PVM.brn:
           case PVM.bze:
           case PVM.dsp:
           case PVM.lda:
           case PVM.ldc:
-            i = (i + 1) % memSize; codeFile.Write(mem[i]);
-            break;
-          case PVM.ldl:
-              
+		  case PVM.ldl:
+			i = (i + 1) % memSize; codeFile.Write(mem[i]);	//writes to code area
+			break;  
           case PVM.prns:
             i = (i + 1) % memSize;
             j = mem[i]; codeFile.Write(" \"");
