@@ -318,6 +318,7 @@ namespace Assem {
         case PVM.ldc:
         case PVM.prns:
 		case PVM.ldl:
+		case PVM.stl:
           results.Write(mem[cpu.pc], 7); break;
         default: break;
       }
