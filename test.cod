@@ -2,9 +2,10 @@ ASSEM
 BEGIN
   {    0 } DSP      1
   {    2 } LDA_0   
-  {    3 } INPI    
+  {    3 } INPC    
   {    4 } LDL_0   
   {    5 } INC     
-  {    6 } PRNI    
-  {    7 } HALT    
+  {    6 } LOW     
+  {    7 } PRNC    
+  {    8 } HALT    
 END.

@@ -587,7 +587,17 @@ namespace Assem {
             }
       break;
                      // toUpperCase
-          case PVM.low:           // toLowerCase
+          case PVM.low:
+          tos = mem[cpu.sp++];
+            if (64 < tos && tos < 91)
+            {
+              mem[--cpu.sp] = (tos + 31);    
+            }
+            else
+            {
+                ps = badOp;
+            }
+      break;         // toLowerCase
           case PVM.islet:         // isLetter
           case PVM.inc:                         //NOT DONE PROPERLY
           tos = mem[cpu.sp++];           // ++  //NOT DONE PROPERLY 

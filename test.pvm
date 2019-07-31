@@ -1,8 +1,9 @@
 	0	DSP		1		;	charBro = var 0 
 	2	LDA_0
-	3	INPI			;	read in character and store in var 0 						
+	3	INPC			;	read in character and store in var 0 						
 	4	LDL_0
 	5 INC
-	6	PRNI			;	print char stored in var 0
-	7	HALT
+	6 LOW
+	7	PRNC			;	print char stored in var 0
+	8	HALT
 	
