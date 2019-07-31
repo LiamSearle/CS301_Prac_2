@@ -1,7 +1,7 @@
-	0	DSP		1
-	2	LDC		200		;	val
-	3	STL_0			;	var 0 = val
-	4	LDA_0
-	5	LDV
-	6	PRNI
-	7	HALT
+	0	DSP		1		;	charBro = var 0 
+	2	LDA_0
+	3	INPC			;	read in character and store in var 0 						
+	4	LDL_0
+	5	PRNC			;	print char stored in var 0
+	6	HALT
+	
