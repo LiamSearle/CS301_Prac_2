@@ -444,10 +444,8 @@ namespace Assem {
             }
             else
             {
-               
                 ps = badVal;
             }
-             
             break;
           case PVM.div:           // integer division (quotient)
             tos = mem[cpu.sp++];
@@ -576,8 +574,7 @@ namespace Assem {
 			mem[mem[cpu.sp++]] = mem[cpu.sp++];
 			break;
           case PVM.stoc:          // character checked store
-          case PVM.inpc:          // character input
-          case PVM.prnc:          // character output
+          //case PVM.inpc:          // character input         // character output
           case PVM.cap:           // toUpperCase
           case PVM.low:           // toLowerCase
           case PVM.islet:         // isLetter

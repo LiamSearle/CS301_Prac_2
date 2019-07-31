@@ -1,0 +1,71 @@
+ASSEM
+BEGIN
+  {    0 } DSP      3
+  {    2 } PRNS     "   X     Y     Z     X OR !Y AND Z\n"
+  {    4 } LDA      0
+  {    6 } LDC      0
+  {    8 } STO     
+  {    9 } LDA      1
+  {   11 } LDC      0
+  {   13 } STO     
+  {   14 } LDA      2
+  {   16 } LDC      0
+  {   18 } STO     
+  {   19 } LDA      0
+  {   21 } LDV     
+  {   22 } PRNB    
+  {   23 } LDA      1
+  {   25 } LDV     
+  {   26 } PRNB    
+  {   27 } LDA      2
+  {   29 } LDV     
+  {   30 } PRNB    
+  {   31 } LDA      0
+  {   33 } LDV     
+  {   34 } LDA      1
+  {   36 } LDV     
+  {   37 } NOT     
+  {   38 } BZE      55
+  {   40 } LDA      2
+  {   42 } LDV     
+  {   43 } BZE      55
+  {   45 } LDA      1
+  {   47 } LDV     
+  {   48 } NOT     
+  {   49 } LDA      2
+  {   51 } LDV     
+  {   52 } AND     
+  {   53 } BRN      57
+  {   55 } LDC      0
+  {   57 } OR      
+  {   58 } PRNB    
+  {   59 } PRNS     "\n"
+  {   61 } LDA      2
+  {   63 } LDA      2
+  {   65 } LDV     
+  {   66 } NOT     
+  {   67 } STO     
+  {   68 } LDA      2
+  {   70 } LDV     
+  {   71 } NOT     
+  {   72 } BZE      19
+  {   74 } LDA      1
+  {   76 } LDA      1
+  {   78 } LDV     
+  {   79 } NOT     
+  {   80 } STO     
+  {   81 } LDA      1
+  {   83 } LDV     
+  {   84 } NOT     
+  {   85 } BZE      14
+  {   87 } LDA      0
+  {   89 } LDA      0
+  {   91 } LDV     
+  {   92 } NOT     
+  {   93 } STO     
+  {   94 } LDA      0
+  {   96 } LDV     
+  {   97 } NOT     
+  {   98 } BZE      9
+  {  100 } HALT    
+END.

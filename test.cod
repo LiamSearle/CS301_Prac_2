@@ -1,9 +1,9 @@
 ASSEM
 BEGIN
   {    0 } DSP      1
-  {    2 } LDA      0
-  {    4 } STL     
-  {    5 } LDL_0   
-  {    6 } PRNI    
-  {    7 } HALT    
+  {    2 } LDA_0   
+  {    3 } INPC    
+  {    4 } LDL_0   
+  {    5 } PRNC    
+  {    6 } HALT    
 END.
