@@ -395,10 +395,16 @@ namespace Assem {
           case PVM.inpi:          // integer input
             mem[mem[cpu.sp++]] = data.ReadInt();
             break;
+          case PVM.inpc:          // char input
+            mem[mem[cpu.sp++]] = data.ReadChar();
+            break;
           case PVM.prni:          // integer output
 //            if (tracing) results.Write(padding);
             results.Write(mem[cpu.sp++], 0);
 //            if (tracing) results.WriteLine();
+            break;
+          case PVM.prnc:          // integer output
+            results.Write(mem[cpu.sp++], 0);
             break;
           case PVM.inpb:          // boolean input
             mem[mem[cpu.sp++]] = data.ReadBool() ? 1 : 0;
