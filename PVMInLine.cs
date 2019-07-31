@@ -520,10 +520,25 @@ namespace Assem {
           case PVM.lda_2:         // push local address 2
           case PVM.lda_3:         // push local address 3
           case PVM.ldl:           // push local value
+            mem[--cpu.sp] = cpu.fp - 1 - mem[cpu.pc++];
+            mem[cpu.sp] = mem[mem[cpu.sp]];
+            break;
           case PVM.ldl_0:         // push value of local variable 0
+            mem[--cpu.sp] = cpu.fp - 1 - 0;
+            mem[cpu.sp] = mem[mem[cpu.sp]];
+            break;
           case PVM.ldl_1:         // push value of local variable 1
+            mem[--cpu.sp] = cpu.fp - 1 - 1;
+            mem[cpu.sp] = mem[mem[cpu.sp]];
+            break;
           case PVM.ldl_2:         // push value of local variable 2
+            mem[--cpu.sp] = cpu.fp - 1 - 2;
+            mem[cpu.sp] = mem[mem[cpu.sp]];
+            break;
           case PVM.ldl_3:         // push value of local variable 3
+            mem[--cpu.sp] = cpu.fp - 1 - 3;
+            mem[cpu.sp] = mem[mem[cpu.sp]];
+            break;
           case PVM.stl:           // store local value
           case PVM.stlc:          // store local value
           case PVM.stl_0:         // pop to local variable 0
@@ -623,7 +638,8 @@ namespace Assem {
           case PVM.ldc:
             i = (i + 1) % memSize; codeFile.Write(mem[i]);
             break;
-
+          case PVM.ldl:
+              
           case PVM.prns:
             i = (i + 1) % memSize;
             j = mem[i]; codeFile.Write(" \"");
