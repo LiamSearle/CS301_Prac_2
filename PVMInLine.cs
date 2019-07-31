@@ -575,11 +575,28 @@ namespace Assem {
 			break;
           case PVM.stoc:          // character checked store
           //case PVM.inpc:          // character input         // character output
-          case PVM.cap:           // toUpperCase
+          case PVM.cap:
+          tos = mem[cpu.sp++];
+            if (96 < tos && tos < 123)
+            {
+              mem[--cpu.sp] = (tos - 32);    
+            }
+            else
+            {
+                ps = badOp;
+            }
+      break;
+                     // toUpperCase
           case PVM.low:           // toLowerCase
           case PVM.islet:         // isLetter
-          case PVM.inc:           // ++
-          case PVM.dec:           // --
+          case PVM.inc:                         //NOT DONE PROPERLY
+          tos = mem[cpu.sp++];           // ++  //NOT DONE PROPERLY 
+          mem[--cpu.sp] = (tos += 1);           //NOT DONE PROPERLY
+      break;                                    //NOT DONE PROPERLY
+          case PVM.dec:                         //NOT DONE PROPERLY 
+          tos = mem[cpu.sp++];           // --  //NOT DONE PROPERLY
+          mem[--cpu.sp] = (tos -= 1);           //NOT DONE PROPERLY
+      break;                                    
           default:                // unrecognized opcode
             ps = badOp;
             break;
