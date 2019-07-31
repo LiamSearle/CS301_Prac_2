@@ -504,6 +504,8 @@ namespace Assem {
             HeapDump(results, pcNow);
             break;
           case PVM.ldc_0:         // push constant 0
+            mem[--cpu.sp] = 0;
+            break;
           case PVM.ldc_1:         // push constant 1
           case PVM.ldc_2:         // push constant 2
           case PVM.ldc_3:         // push constant 3
