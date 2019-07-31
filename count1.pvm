@@ -1,0 +1,102 @@
+	0	DSP		4			;	var 0 = limit, var 1 = count, var 2 = i, var 3 = item
+	2	LDA		0		
+	4	LDC		2000
+	6	STO					;	limit = 2000
+	7	LDA		1
+	9	LDA		0
+	11	LDV					; 	could just LDC 2000 instead of LDA  & LDV, but this is probs better practice
+	12	ANEW				;	int[] count = new int[limit]
+	13	STO
+	14	LDA		2
+	16	LDC		0
+	18	STO					;	int i = 0
+	19	LDA		2			;	while (i<limit)		{B}
+	21	LDV
+	22	LDA		0
+	24	LDV
+	25	CLT					;	i<limit?	(pushes 1 or 0)					
+	26	BZE		49			;	if i>=limit, skip past loop.	{A}	
+	28	LDA		1
+	30	LDV
+	31	LDA		2
+	33	LDV
+	34	LDXA				;	count[i]
+	35	LDC		0
+	37	STO					;	count[i] = 0
+	38	LDA		2			
+	40	LDA		2
+	42	LDV
+	43	LDC		1
+	45	ADD					
+	46	STO					;	i = i + 1
+	47	BRN		19			;	{B}
+	49	LDA		3			;	{A}
+	51	PRNS	"First number? "	
+	53	INPI				;	 read("First number? ", item)
+	54	LDA		3			;	 while ((item > 0) && (item < limit))	{D}
+	56	LDV
+	57	LDC		0
+	59	CGT					;	item > 0?	(pushes 1 or 0)	
+	60	LDA		3
+	62	LDV
+	63	LDA		0
+	65	LDV
+	66	CLT					;	item < limit?	(pushes 1 or 0)
+	67	AND
+	68	BZE		96			;	(item > 0) && (item < limit) {C}
+	70	LDA		1
+	72	LDV
+	73	LDA		3
+	75	LDV					
+	76	LDXA				;	address of count[item]
+	77	LDA		1
+	79	LDV	
+	80	LDA		3
+	82	LDV
+	83	LDXA
+	84	LDV
+	85	LDC		1
+	87	ADD
+	88	STO					;	count[item] = count[item] + 1
+	89	LDA		3
+	91	PRNS	"Next number (<= 0 stops) "
+	93	INPI				;	read("Next number (<= 0 stops) ", item)
+	94	BRN		54			;	{D}
+	96	LDA		2			;	{C}
+	98	LDC		0
+	100	STO					;	i = 0
+	101	LDA		2			;	while (i < limit)	{G}
+	103	LDV
+	104	LDA		0
+	106	LDV
+	107	CLT					;	i < limit?	(pushes 1 or 0)
+	108	BZE		150			;	Branch if i >= limit {E}			
+	110	LDA		1
+	112	LDV
+	113	LDA		2
+	115	LDV
+	116	LDXA				;	address of count[i]			
+	117	LDV					;	value of count[i]	(dereferencing)
+	118	LDC		0
+	120	CGT					;	count[i] > 0?   (pushes 1 if count[i] > 0 and branches if count[i] <= 0) 
+	121	BZE		139			;	if(count[i] > 0) {F}	(branches to i = i+1)
+	123	LDA		1			
+	125	LDV
+	126	LDA		2	
+	128	LDV
+	129	LDXA				;	address of count[i]
+	130	LDV					;	value of count[i]
+	131	LDA		2
+	133	LDV					;	i
+	134	PRNI				;	print i
+	135	PRNS	" "			; 	print " "
+	137	PRNI				;	print count[i]
+	138	PRNL				;	write(i, count[i], "\n")
+	139	LDA		2			;	{F}
+	141	LDA		2
+	143	LDV
+	144	LDC		1
+	146	ADD					
+	147	STO					;	i = i + 1
+	148	BRN		101			;	{G}
+	150	HALT				;	{E}	
