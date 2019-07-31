@@ -548,8 +548,8 @@ namespace Assem {
             mem[cpu.sp] = mem[mem[cpu.sp]];
             break;
           case PVM.stl:           // store local value
-			mem[--cpu.sp] = cpu.fp - 1 - mem[cpu.pc++];
-			tos = mem[cpu.sp++]; mem[mem[cpu.sp++]] = tos;
+			mem[--cpu.sp] = cpu.fp - 1 - mem[cpu.pc++];  //LDA
+			tos = mem[mem[cpu.sp++]]; mem[cpu.sp++]  = tos;  //STO
 			break;
           case PVM.stlc:          // store local value
           case PVM.stl_0:         // pop to local variable 0
