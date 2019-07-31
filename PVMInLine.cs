@@ -583,7 +583,7 @@ namespace Assem {
             }
             else
             {
-                ps = badOp;
+                mem[--cpu.sp] = (tos);
             }
       break;
                      // toUpperCase
