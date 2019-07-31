@@ -562,9 +562,17 @@ namespace Assem {
             HeapDump(results, pcNow);
             break;
           case PVM.ldc_0:         // push constant 0
+			Push(0);
+			break;
           case PVM.ldc_1:         // push constant 1
+			Push(1);
+			break;
           case PVM.ldc_2:         // push constant 2
+			Push(2);
+			break;
           case PVM.ldc_3:         // push constant 3
+			Push(3);
+			break;
           case PVM.lda_0:         // push local address 0
           case PVM.lda_1:         // push local address 1
           case PVM.lda_2:         // push local address 2
