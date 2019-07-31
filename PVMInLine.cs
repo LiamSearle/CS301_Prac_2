@@ -510,9 +510,17 @@ namespace Assem {
           case PVM.ldc_2:         // push constant 2
           case PVM.ldc_3:         // push constant 3
           case PVM.lda_0:         // push local address 0
+            mem[--cpu.sp] = cpu.fp - 1 - 0;                
+            break;
           case PVM.lda_1:         // push local address 1
+            mem[--cpu.sp] = cpu.fp - 1 - 1;
+            break;
           case PVM.lda_2:         // push local address 2
+            mem[--cpu.sp] = cpu.fp - 1 - 2;
+            break;
           case PVM.lda_3:         // push local address 3
+            mem[--cpu.sp] = cpu.fp - 1 - 3;
+            break;
           case PVM.ldl:           // push local value
           case PVM.ldl_0:         // push value of local variable 0
           case PVM.ldl_1:         // push value of local variable 1
