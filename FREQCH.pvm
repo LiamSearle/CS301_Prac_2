@@ -10,36 +10,36 @@
 	11	LDL_2				;	while (i<limit)		{B}
 	12	LDL_0
 	13	CLT					;	i<limit?	(pushes 1 or 0)					
-	14	BZE		27			;	if i>=limit, skip past loop.	{A}	
+	14	BZE		26			;	if i>=limit, skip past loop.	{A}	
 	16	LDL_1
 	17	LDL_2
 	18	LDXA				;	count[i]
 	19	LDC_0
 	20	STO					;	count[i] = 0		
 	21	LDL_2
-	22	INC	
-	23	NOP					
-	24	STL_2				;	i++			
-	25	BRN		11			;	{B}
-	27	LDA_3				;	{A}
-	28	INPI				;	read(ch)
-	29	LDL_3				;	while (ch != '.')	{D}
-	30	LDC		46			;	'.'
-	32	CNE					;	ch != '.' ?
-	33	BZE		49			;	{C}
-	35	LDL_1				
-	36	LDL_3
-	37	CAP
-	38	LDXA				;	address of count[ch]
-	39	LDL_1
-	40	LDL_3
+	22	INC				
+	23	STL_2				;	i++			
+	24	BRN		11			;	{B}
+	26	LDA_3				;	{A}
+	27	INPC				;	read(ch)
+	28	LDL_3				;	while (ch != '.')	{D}
+	29	LDC		46			;	'.'
+	31	CNE					;	ch != '.' ?
+	32	BZE		49			;	{C}
+	34	LDL_1				
+	35	LDL_3
+	36	CAP
+	37	LDXA				;	address of count[toUpperCase(ch)]
+	38	LDL_1
+	39	LDL_3
+	40	CAP
 	41	LDXA
 	42	LDV
 	43	INC
 	44	STO					;	count[toUpperCase(ch)]++	{INC}
 	45	LDA_3
-	46	INPI				;	read(ch)
-	47	BRN		29			;	{D}				
+	46	INPC				;	read(ch)
+	47	BRN		28			;	{D}				
 	49	LDC		90			;	ch = 'Z' {C}
 	51	STL_3				;	i = 0
 	52	LDL_3				;	while (ch >= 'A')	{G}
